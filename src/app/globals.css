@@ -1,0 +1,1498 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Enhanced font visibility and theme support */
+:root {
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Light theme colors */
+  --color-text-primary: #000000;
+  --color-text-secondary: #4b5563;
+  --color-text-tertiary: #6b7280;
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f9fafb;
+  --color-bg-tertiary: #f3f4f6;
+  --color-border: #d1d5db;
+  --color-accent: #3b82f6;
+  
+  /* Enhanced contrast ratios */
+  --text-shadow-light: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --text-shadow-strong: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark theme */
+.dark-theme,
+[data-theme="dark"] {
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #e5e7eb;
+  --color-text-tertiary: #d1d5db;
+  --color-bg-primary: #1f2937;
+  --color-bg-secondary: #111827;
+  --color-bg-tertiary: #374151;
+  --color-border: #4b5563;
+  --color-accent: #60a5fa;
+  
+  --text-shadow-light: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --text-shadow-strong: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Enhanced typography */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: var(--font-weight-normal);
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-secondary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Enhanced text visibility */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--font-weight-bold) !important;
+  color: var(--color-text-primary) !important;
+  text-shadow: var(--text-shadow-light);
+  letter-spacing: -0.025em;
+}
+
+p, span, div {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-normal);
+}
+
+/* Ant Design component overrides for better visibility */
+.ant-typography {
+  color: var(--color-text-primary) !important;
+  font-weight: var(--font-weight-medium) !important;
+}
+
+.ant-typography-title {
+  color: var(--color-text-primary) !important;
+  font-weight: var(--font-weight-bold) !important;
+  text-shadow: var(--text-shadow-light) !important;
+}
+
+.ant-typography strong {
+  font-weight: var(--font-weight-bold) !important;
+  color: var(--color-text-primary) !important;
+}
+
+/* Button text visibility */
+.ant-btn {
+  font-weight: var(--font-weight-medium) !important;
+  text-shadow: none !important;
+  border-width: 1.5px !important;
+}
+
+.ant-btn-primary {
+  font-weight: var(--font-weight-semibold) !important;
+  text-shadow: var(--text-shadow-light) !important;
+}
+
+/* Card content visibility */
+.ant-card-head-title {
+  color: var(--color-text-primary) !important;
+  font-weight: var(--font-weight-semibold) !important;
+  font-size: 16px !important;
+}
+
+.ant-card-body {
+  color: var(--color-text-primary) !important;
+}
+
+/* Input and form elements */
+.ant-input,
+.ant-select-selector,
+.ant-input-number {
+  color: var(--color-text-primary) !important;
+  font-weight: var(--font-weight-medium) !important;
+  border-width: 1.5px !important;
+}
+
+.ant-input::placeholder,
+.ant-select-selection-placeholder {
+  color: var(--color-text-tertiary) !important;
+  font-weight: var(--font-weight-normal) !important;
+}
+
+/* Badge and tag visibility */
+.ant-badge-count {
+  font-weight: var(--font-weight-bold) !important;
+  text-shadow: var(--text-shadow-light) !important;
+}
+
+.ant-tag {
+  font-weight: var(--font-weight-medium) !important;
+  border-width: 1px !important;
+}
+
+/* Dropdown and menu visibility */
+.ant-dropdown-menu {
+  background-color: var(--color-bg-primary) !important;
+  border: 1.5px solid var(--color-border) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.ant-dropdown-menu-item {
+  color: var(--color-text-primary) !important;
+  font-weight: var(--font-weight-medium) !important;
+}
+
+.ant-dropdown-menu-item:hover {
+  background-color: var(--color-bg-tertiary) !important;
+}
+
+/* Notification improvements */
+.ant-notification-notice {
+  background-color: var(--color-bg-primary) !important;
+  border: 1.5px solid var(--color-border) !important;
+  color: var(--color-text-primary) !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+.ant-notification-notice-message {
+  color: var(--color-text-primary) !important;
+  font-weight: var(--font-weight-semibold) !important;
+  text-shadow: var(--text-shadow-light) !important;
+}
+
+.ant-notification-notice-description {
+  color: var(--color-text-secondary) !important;
+  font-weight: var(--font-weight-medium) !important;
+}
+
+/* Dark theme specific notifications */
+[data-theme="dark"] .ant-notification-notice {
+  background-color: #1f2937 !important;
+  border-color: #4b5563 !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme="dark"] .ant-notification-notice-message {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+  font-weight: 600 !important;
+}
+
+[data-theme="dark"] .ant-notification-notice-description {
+  color: #e5e7eb !important;
+  font-weight: 500 !important;
+}
+
+[data-theme="dark"] .ant-notification-notice-icon {
+  color: #60a5fa !important;
+}
+
+/* Force text visibility in dark theme notifications */
+[data-theme="dark"] .ant-notification-notice * {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .ant-notification-notice .ant-notification-notice-description * {
+  color: #e5e7eb !important;
+}
+
+/* Light theme specific notifications */
+[data-theme="light"] .ant-notification-notice {
+  background-color: #ffffff !important;
+  border-color: #d1d5db !important;
+  color: #000000 !important;
+}
+
+[data-theme="light"] .ant-notification-notice-message {
+  color: #000000 !important;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5) !important;
+}
+
+[data-theme="light"] .ant-notification-notice-description {
+  color: #4b5563 !important;
+}
+
+/* Success notifications */
+.ant-notification-notice-success {
+  border-left: 4px solid #52c41a !important;
+}
+
+[data-theme="dark"] .ant-notification-notice-success {
+  border-left-color: #34d399 !important;
+}
+
+[data-theme="dark"] .ant-notification-notice-success .ant-notification-notice-icon {
+  color: #34d399 !important;
+}
+
+/* Error notifications */
+.ant-notification-notice-error {
+  border-left: 4px solid #ff4d4f !important;
+}
+
+[data-theme="dark"] .ant-notification-notice-error {
+  border-left-color: #ef4444 !important;
+}
+
+[data-theme="dark"] .ant-notification-notice-error .ant-notification-notice-icon {
+  color: #ef4444 !important;
+}
+
+/* Warning notifications */
+.ant-notification-notice-warning {
+  border-left: 4px solid #faad14 !important;
+}
+
+[data-theme="dark"] .ant-notification-notice-warning {
+  border-left-color: #fbbf24 !important;
+}
+
+[data-theme="dark"] .ant-notification-notice-warning .ant-notification-notice-icon {
+  color: #fbbf24 !important;
+}
+
+/* Info notifications */
+.ant-notification-notice-info {
+  border-left: 4px solid #1890ff !important;
+}
+
+[data-theme="dark"] .ant-notification-notice-info {
+  border-left-color: #60a5fa !important;
+}
+
+[data-theme="dark"] .ant-notification-notice-info .ant-notification-notice-icon {
+  color: #60a5fa !important;
+}
+
+/* Notification close button */
+.ant-notification-notice-close {
+  color: var(--color-text-secondary) !important;
+}
+
+[data-theme="dark"] .ant-notification-notice-close {
+  color: #d1d5db !important;
+}
+
+/* Message API specific styling */
+.dark-theme-message {
+  background-color: #1f2937 !important;
+  color: #ffffff !important;
+  border: 2px solid #4b5563 !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+}
+
+.dark-theme-message * {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+}
+
+.dark-theme-message .ant-message-notice-content {
+  color: #ffffff !important;
+  background-color: #1f2937 !important;
+}
+
+.light-theme-message {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 2px solid #d1d5db !important;
+  font-weight: 600 !important;
+}
+
+.light-theme-message * {
+  color: #000000 !important;
+  font-weight: 600 !important;
+}
+
+.light-theme-message .ant-message-notice-content {
+  color: #000000 !important;
+  background-color: #ffffff !important;
+}
+
+/* Force message visibility in dark theme */
+[data-theme="dark"] .ant-message {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .ant-message-notice {
+  background-color: #1f2937 !important;
+  color: #ffffff !important;
+  border: 2px solid #4b5563 !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme="dark"] .ant-message-notice-content {
+  background-color: #1f2937 !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] .ant-message-success .ant-message-notice-content {
+  background-color: #1f2937 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .ant-message-error .ant-message-notice-content {
+  background-color: #1f2937 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .ant-message-warning .ant-message-notice-content {
+  background-color: #1f2937 !important;
+  color: #ffffff !important;
+}
+
+/* Enhanced button text visibility */
+[data-theme="dark"] .ant-btn {
+  color: #ffffff !important;
+  background-color: #374151 !important;
+  border-color: #4b5563 !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme="dark"] .ant-btn-primary {
+  color: #ffffff !important;
+  background-color: #3b82f6 !important;
+  border-color: #3b82f6 !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] .ant-btn-default {
+  color: #ffffff !important;
+  background-color: #374151 !important;
+  border-color: #4b5563 !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme="dark"] .ant-btn-danger {
+  color: #ffffff !important;
+  background-color: #dc2626 !important;
+  border-color: #dc2626 !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] .ant-btn-text {
+  color: #ffffff !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme="dark"] .ant-btn:hover {
+  color: #ffffff !important;
+  transform: translateY(-1px) !important;
+}
+
+[data-theme="dark"] .ant-btn-primary:hover {
+  color: #ffffff !important;
+  background-color: #2563eb !important;
+  border-color: #2563eb !important;
+}
+
+[data-theme="dark"] .ant-btn-default:hover {
+  color: #ffffff !important;
+  background-color: #4b5563 !important;
+  border-color: #6b7280 !important;
+}
+
+[data-theme="dark"] .ant-btn-danger:hover {
+  color: #ffffff !important;
+  background-color: #b91c1c !important;
+  border-color: #b91c1c !important;
+}
+
+/* Light theme button text */
+[data-theme="light"] .ant-btn {
+  color: #000000 !important;
+  font-weight: 600 !important;
+}
+
+[data-theme="light"] .ant-btn-primary {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Aggressive message text visibility fixes */
+.ant-message-notice-content,
+.ant-message-custom-content,
+.ant-message-success .ant-message-notice-content,
+.ant-message-error .ant-message-notice-content,
+.ant-message-warning .ant-message-notice-content,
+.ant-message-info .ant-message-notice-content {
+  color: inherit !important;
+  background-color: inherit !important;
+}
+
+[data-theme="dark"] .ant-message-notice-content,
+[data-theme="dark"] .ant-message-custom-content,
+[data-theme="dark"] .ant-message-success .ant-message-notice-content,
+[data-theme="dark"] .ant-message-error .ant-message-notice-content,
+[data-theme="dark"] .ant-message-warning .ant-message-notice-content,
+[data-theme="dark"] .ant-message-info .ant-message-notice-content {
+  color: #ffffff !important;
+  background-color: #1f2937 !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="light"] .ant-message-notice-content,
+[data-theme="light"] .ant-message-custom-content,
+[data-theme="light"] .ant-message-success .ant-message-notice-content,
+[data-theme="light"] .ant-message-error .ant-message-notice-content,
+[data-theme="light"] .ant-message-warning .ant-message-notice-content,
+[data-theme="light"] .ant-message-info .ant-message-notice-content {
+  color: #000000 !important;
+  background-color: #ffffff !important;
+  font-weight: 600 !important;
+}
+
+/* Force all text elements in messages to be visible */
+[data-theme="dark"] .ant-message * {
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .ant-message * {
+  color: #000000 !important;
+}
+
+/* Message icons */
+[data-theme="dark"] .ant-message-success .anticon {
+  color: #34d399 !important;
+}
+
+[data-theme="dark"] .ant-message-error .anticon {
+  color: #ef4444 !important;
+}
+
+[data-theme="dark"] .ant-message-warning .anticon {
+  color: #fbbf24 !important;
+}
+
+[data-theme="dark"] .ant-message-info .anticon {
+  color: #60a5fa !important;
+}
+
+/* Tooltip visibility */
+.ant-tooltip-inner {
+  background-color: rgba(0, 0, 0, 0.9) !important;
+  color: #ffffff !important;
+  font-weight: var(--font-weight-medium) !important;
+  text-shadow: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Modal visibility */
+.ant-modal-content {
+  background-color: var(--color-bg-primary) !important;
+  color: var(--color-text-primary) !important;
+  border: 2px solid var(--color-border) !important;
+}
+
+.ant-modal-header {
+  background-color: var(--color-bg-primary) !important;
+  border-bottom: 2px solid var(--color-border) !important;
+}
+
+.ant-modal-title {
+  color: var(--color-text-primary) !important;
+  font-weight: var(--font-weight-semibold) !important;
+  text-shadow: var(--text-shadow-light) !important;
+}
+
+.ant-modal-body {
+  color: var(--color-text-primary) !important;
+}
+
+.ant-modal-footer {
+  background-color: var(--color-bg-primary) !important;
+  border-top: 2px solid var(--color-border) !important;
+}
+
+/* Dark theme specific modals */
+[data-theme="dark"] .ant-modal-content {
+  background-color: #1f2937 !important;
+  color: #ffffff !important;
+  border-color: #4b5563 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme="dark"] .ant-modal-header {
+  background-color: #1f2937 !important;
+  border-bottom-color: #4b5563 !important;
+}
+
+[data-theme="dark"] .ant-modal-title {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] .ant-modal-body {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .ant-modal-footer {
+  background-color: #1f2937 !important;
+  border-top-color: #4b5563 !important;
+}
+
+/* Light theme specific modals */
+[data-theme="light"] .ant-modal-content {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border-color: #d1d5db !important;
+}
+
+[data-theme="light"] .ant-modal-header {
+  background-color: #ffffff !important;
+  border-bottom-color: #d1d5db !important;
+}
+
+[data-theme="light"] .ant-modal-title {
+  color: #000000 !important;
+}
+
+[data-theme="light"] .ant-modal-body {
+  color: #000000 !important;
+}
+
+[data-theme="light"] .ant-modal-footer {
+  background-color: #ffffff !important;
+  border-top-color: #d1d5db !important;
+}
+
+/* Modal confirm dialogs */
+.ant-modal-confirm .ant-modal-body {
+  color: var(--color-text-primary) !important;
+}
+
+.ant-modal-confirm .ant-modal-confirm-title {
+  color: var(--color-text-primary) !important;
+  font-weight: var(--font-weight-semibold) !important;
+}
+
+.ant-modal-confirm .ant-modal-confirm-content {
+  color: var(--color-text-secondary) !important;
+  font-weight: var(--font-weight-medium) !important;
+}
+
+[data-theme="dark"] .ant-modal-confirm .ant-modal-body {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .ant-modal-confirm .ant-modal-confirm-title {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .ant-modal-confirm .ant-modal-confirm-content {
+  color: #e5e7eb !important;
+}
+
+/* Drawer visibility */
+.ant-drawer-content {
+  background-color: var(--color-bg-primary) !important;
+  color: var(--color-text-primary) !important;
+}
+
+.ant-drawer-header {
+  background-color: var(--color-bg-primary) !important;
+  border-bottom: 1.5px solid var(--color-border) !important;
+}
+
+.ant-drawer-title {
+  color: var(--color-text-primary) !important;
+  font-weight: var(--font-weight-semibold) !important;
+}
+
+/* Enhanced contrast for interactive elements */
+.ant-btn:hover,
+.ant-btn:focus {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  border-width: 2px !important;
+}
+
+.ant-card:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
+  border-width: 2px !important;
+}
+
+/* Focus states for accessibility */
+.ant-btn:focus,
+.ant-input:focus,
+.ant-select-selector:focus {
+  outline: 2px solid var(--color-accent) !important;
+  outline-offset: 2px !important;
+}
+
+/* Enhanced component visibility and theme support */
+
+/* Card content improvements */
+.ant-card {
+  border-width: 2px !important;
+}
+
+.ant-card-head {
+  background-color: var(--color-bg-primary) !important;
+  border-bottom: 2px solid var(--color-border) !important;
+}
+
+.ant-card-head-title {
+  color: var(--color-text-primary) !important;
+  font-weight: var(--font-weight-bold) !important;
+  font-size: 16px !important;
+  text-shadow: var(--text-shadow-light) !important;
+}
+
+.ant-card-body {
+  background-color: var(--color-bg-primary) !important;
+  color: var(--color-text-primary) !important;
+}
+
+/* List and content improvements */
+.ant-list-item {
+  color: var(--color-text-primary) !important;
+  border-bottom: 1px solid var(--color-border) !important;
+  padding: 12px 0 !important;
+}
+
+.ant-list-item-meta-title {
+  color: var(--color-text-primary) !important;
+  font-weight: var(--font-weight-semibold) !important;
+  font-size: 14px !important;
+}
+
+.ant-list-item-meta-description {
+  color: var(--color-text-secondary) !important;
+  font-weight: var(--font-weight-medium) !important;
+}
+
+/* Polygon card specific improvements */
+.ant-card .ant-typography {
+  color: var(--color-text-primary) !important;
+  font-weight: var(--font-weight-medium) !important;
+}
+
+.ant-card .ant-typography-caption {
+  color: var(--color-text-secondary) !important;
+  font-weight: var(--font-weight-medium) !important;
+  font-size: 13px !important;
+}
+
+/* Sidebar specific improvements */
+.fixed-sidebar .ant-card {
+  background-color: var(--color-bg-primary) !important;
+  border-color: var(--color-border) !important;
+  margin-bottom: 16px !important;
+}
+
+.fixed-sidebar .ant-card-head {
+  background-color: var(--color-bg-primary) !important;
+  border-bottom-color: var(--color-border) !important;
+}
+
+.fixed-sidebar .ant-card-body {
+  background-color: var(--color-bg-primary) !important;
+}
+
+.fixed-sidebar .ant-typography {
+  color: var(--color-text-primary) !important;
+  font-weight: var(--font-weight-medium) !important;
+}
+
+.fixed-sidebar .ant-list-item {
+  color: var(--color-text-primary) !important;
+}
+
+.fixed-sidebar .ant-btn {
+  color: var(--color-text-primary) !important;
+  background-color: var(--color-bg-primary) !important;
+  border-color: var(--color-border) !important;
+  font-weight: var(--font-weight-medium) !important;
+}
+
+.fixed-sidebar .ant-btn-primary {
+  background-color: var(--color-accent) !important;
+  border-color: var(--color-accent) !important;
+  color: #ffffff !important;
+  font-weight: var(--font-weight-semibold) !important;
+}
+
+.fixed-sidebar .ant-btn-danger {
+  background-color: #dc2626 !important;
+  border-color: #dc2626 !important;
+  color: #ffffff !important;
+  font-weight: var(--font-weight-semibold) !important;
+}
+
+/* Input and form improvements in sidebar */
+.fixed-sidebar .ant-input,
+.fixed-sidebar .ant-select-selector,
+.fixed-sidebar .ant-input-number {
+  background-color: var(--color-bg-primary) !important;
+  border-color: var(--color-border) !important;
+  color: var(--color-text-primary) !important;
+  font-weight: var(--font-weight-medium) !important;
+}
+
+.fixed-sidebar .ant-select-selection-item {
+  color: var(--color-text-primary) !important;
+  font-weight: var(--font-weight-medium) !important;
+}
+
+/* Map controls improvements */
+.map-controls .ant-btn {
+  font-weight: 600 !important;
+  text-shadow: none !important;
+  border-width: 2px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Ensure map button text is always visible */
+.map-controls .ant-btn {
+  color: inherit !important;
+}
+
+.map-controls .ant-btn-primary {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+.map-controls .ant-btn-default {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+.map-controls .ant-btn-danger {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Dark theme specific map controls */
+[data-theme="dark"] .map-controls .ant-btn-default {
+  color: #ffffff !important;
+  background-color: #374151 !important;
+  border-color: #60a5fa !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] .map-controls .ant-btn-danger {
+  color: #ffffff !important;
+  background-color: #dc2626 !important;
+  border-color: #ef4444 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Light theme specific map controls */
+[data-theme="light"] .map-controls .ant-btn-default {
+  color: #1890ff !important;
+  background-color: #ffffff !important;
+  border-color: #1890ff !important;
+}
+
+[data-theme="light"] .map-controls .ant-btn-danger {
+  color: #ff4d4f !important;
+  background-color: #ffffff !important;
+  border-color: #ff4d4f !important;
+}
+
+/* Drawing instructions improvements */
+.drawing-instructions {
+  font-weight: 600 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+.drawing-instructions strong {
+  font-weight: 700 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Status info improvements */
+.map-status-info {
+  font-weight: 600 !important;
+  text-shadow: var(--text-shadow-light) !important;
+}
+
+/* Timeline slider improvements */
+.ant-card .timeline-container {
+  color: var(--color-text-primary) !important;
+}
+
+.timeline-container .ant-typography {
+  color: var(--color-text-primary) !important;
+  font-weight: var(--font-weight-medium) !important;
+}
+
+/* Badge improvements */
+.ant-badge-count {
+  font-weight: var(--font-weight-bold) !important;
+  text-shadow: var(--text-shadow-light) !important;
+  font-size: 12px !important;
+  min-width: 20px !important;
+  height: 20px !important;
+  line-height: 18px !important;
+  border-radius: 10px !important;
+  margin-right: 8px !important;
+}
+
+/* Badge wrapper spacing */
+.ant-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.ant-badge-not-a-wrapper {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+/* Header badge container */
+.header-badges {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-left: 16px;
+  padding: 4px 0;
+}
+
+.header-badge-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  min-height: 24px;
+  position: relative;
+}
+
+/* Ensure proper badge alignment */
+.header-badge-item .ant-badge {
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+
+/* Ensure badge text spacing and alignment */
+.header-badge-item .ant-typography {
+  margin: 0 !important;
+  line-height: 1.4 !important;
+  display: flex;
+  align-items: center;
+}
+
+/* Tag improvements */
+.ant-tag {
+  color: var(--color-text-primary) !important;
+  background-color: var(--color-bg-tertiary) !important;
+  border-color: var(--color-border) !important;
+  font-weight: var(--font-weight-medium) !important;
+}
+
+/* Divider improvements */
+.ant-divider {
+  border-color: var(--color-border) !important;
+}
+
+/* Alert improvements */
+.ant-alert {
+  background-color: var(--color-bg-primary) !important;
+  border-color: var(--color-border) !important;
+  color: var(--color-text-primary) !important;
+}
+
+.ant-alert-message {
+  color: var(--color-text-primary) !important;
+  font-weight: var(--font-weight-semibold) !important;
+}
+
+.ant-alert-description {
+  color: var(--color-text-secondary) !important;
+  font-weight: var(--font-weight-medium) !important;
+}
+
+/* Space improvements */
+.ant-space-item {
+  color: var(--color-text-primary) !important;
+}
+
+/* Color picker improvements */
+.ant-color-picker-trigger {
+  border-color: var(--color-border) !important;
+  background-color: var(--color-bg-primary) !important;
+}
+
+/* Switch improvements */
+.ant-switch {
+  background-color: var(--color-bg-tertiary) !important;
+}
+
+.ant-switch-checked {
+  background-color: var(--color-accent) !important;
+}
+
+/* Slider improvements */
+.ant-slider-track {
+  background-color: var(--color-accent) !important;
+}
+
+.ant-slider-handle {
+  border-color: var(--color-accent) !important;
+  background-color: var(--color-bg-primary) !important;
+}
+
+/* Progress improvements */
+.ant-progress-text {
+  color: var(--color-text-primary) !important;
+  font-weight: var(--font-weight-medium) !important;
+}
+
+/* Spin improvements */
+.ant-spin-text {
+  color: var(--color-text-primary) !important;
+  font-weight: var(--font-weight-medium) !important;
+}
+
+/* Result improvements */
+.ant-result-title {
+  color: var(--color-text-primary) !important;
+  font-weight: var(--font-weight-bold) !important;
+}
+
+.ant-result-subtitle {
+  color: var(--color-text-secondary) !important;
+  font-weight: var(--font-weight-medium) !important;
+}
+
+/* Leaflet map improvements for polygon drawing */
+.leaflet-container.drawing-mode {
+  cursor: crosshair !important;
+}
+
+.leaflet-container.drawing-mode .leaflet-interactive {
+  cursor: crosshair !important;
+}
+
+/* Disable pointer events on map controls during drawing */
+.drawing-mode .leaflet-control-zoom,
+.drawing-mode .leaflet-control-attribution {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Improve polygon drawing visibility */
+.leaflet-interactive[stroke-dasharray] {
+  stroke-width: 3;
+  stroke-opacity: 1;
+}
+
+/* Better button styling */
+.map-controls .ant-btn {
+  transition: all 0.2s ease;
+}
+
+.map-controls .ant-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
+}
+
+/* Drawing instructions animation */
+.drawing-instructions {
+  animation: slideInLeft 0.3s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Map loading overlay */
+.map-loading-overlay {
+  backdrop-filter: blur(2px);
+}
+
+/* Polygon popup improvements */
+.leaflet-popup-content {
+  margin: 12px 16px !important;
+  line-height: 1.5 !important;
+}
+
+.leaflet-popup-content h4 {
+  margin: 0 0 8px 0 !important;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+/* Status info styling */
+.map-status-info {
+  font-family: 'Monaco', 'Menlo', monospace;
+  font-size: 11px;
+}
+
+/* Leaflet map styles */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  min-height: 500px;
+  background: #f8f9fa;
+}
+
+/* Map loading state */
+.leaflet-container:not(.map-fully-loaded) {
+  background: #f8f9fa url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBzdHJva2U9IiM5OTkiPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMSAxKSIgc3Ryb2tlLXdpZHRoPSIyIj48Y2lyY2xlIHN0cm9rZS1vcGFjaXR5PSIuNSIgY3g9IjE4IiBjeT0iMTgiIHI9IjE4Ii8+PHBhdGggZD0ibTM5IDM5LTE5LTE5Ii8+PC9nPjwvZz48L3N2Zz4=') center center no-repeat;
+}
+
+.map-fully-loaded {
+  background: transparent !important;
+}
+
+/* Map loading overlay */
+.map-loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(248, 249, 250, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  font-size: 16px;
+  color: #666;
+  backdrop-filter: blur(2px);
+}
+
+/* Map container improvements */
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  min-height: 500px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f8f9fa;
+}
+
+/* Ensure map doesn't overflow */
+.map-wrapper {
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+/* Drawing controls positioning */
+.map-controls {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 1000;
+  display: flex;
+  gap: 8px;
+}
+
+.drawing-instructions {
+  position: absolute;
+  top: 64px;
+  left: 16px;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(4px);
+  padding: 12px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom scrollbar for sidebar */
+.ant-layout-sider::-webkit-scrollbar {
+  width: 6px;
+}
+
+.ant-layout-sider::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.ant-layout-sider::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.ant-layout-sider::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Fixed sidebar custom scrollbar */
+.fixed-sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.fixed-sidebar::-webkit-scrollbar-track {
+  background: #f8f9fa;
+  border-radius: 4px;
+}
+
+.fixed-sidebar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+  border: 2px solid #f8f9fa;
+}
+
+.fixed-sidebar::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.fixed-sidebar::-webkit-scrollbar-thumb:active {
+  background: #64748b;
+}
+
+/* Firefox scrollbar */
+.fixed-sidebar {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f8f9fa;
+  scroll-behavior: smooth;
+}
+
+/* Main content area scrollbar */
+.main-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.main-content::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+.main-content::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.main-content::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.main-content {
+  scroll-behavior: smooth;
+}
+
+/* Ensure fixed positioning works correctly */
+.fixed-sidebar {
+  will-change: scroll-position;
+  transform: translateZ(0); /* Force hardware acceleration */
+}
+
+/* Prevent content jumping when scrollbar appears/disappears */
+.main-content {
+  overflow-y: scroll; /* Always show scrollbar space */
+}
+
+/* Sidebar header styling */
+.fixed-sidebar .sticky {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Range slider custom styles */
+.react-range-track {
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 4px;
+}
+
+.react-range-thumb {
+  height: 24px;
+  width: 24px;
+  background: #3b82f6;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.react-range-thumb:hover {
+  background: #2563eb;
+}
+
+/* Ant Design customizations */
+.ant-layout-header {
+  padding: 0 24px;
+}
+
+.ant-card-head-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.ant-list-item {
+  padding: 8px 0;
+}
+
+/* Map drawing instructions */
+.drawing-instructions {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(4px);
+}
+
+/* Color picker adjustments */
+.ant-color-picker-trigger {
+  width: 32px;
+  height: 32px;
+}
+
+/* Timeline slider container */
+.timeline-container {
+  position: relative;
+  padding: 20px 0;
+}
+
+.timeline-track {
+  position: relative;
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 4px;
+}
+
+.timeline-thumb {
+  position: absolute;
+  top: -8px;
+  width: 24px;
+  height: 24px;
+  background: #3b82f6;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+.timeline-thumb:hover {
+  background: #2563eb;
+  transform: scale(1.1);
+}
+
+/* Enhanced responsive design */
+@media (max-width: 1024px) {
+  .dashboard-content {
+    margin-right: 0 !important;
+  }
+  
+  .dashboard-sidebar {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    flex: none !important;
+    top: auto !important;
+    bottom: auto !important;
+    height: auto !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .ant-layout-sider {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    flex: none !important;
+  }
+  
+  .timeline-container {
+    padding: 10px 0;
+  }
+  
+  .ant-layout-header {
+    padding: 0 16px;
+  }
+  
+  .ant-layout-content {
+    padding: 16px !important;
+    margin-right: 0 !important;
+  }
+  
+  .map-container {
+    height: 400px !important;
+    min-height: 350px !important;
+  }
+  
+  /* Mobile-specific map controls */
+  .map-controls {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 8px !important;
+  }
+  
+  .map-controls .ant-btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  
+  /* Mobile drawing instructions */
+  .drawing-instructions {
+    font-size: 14px !important;
+    padding: 12px !important;
+    max-width: none !important;
+    left: 16px !important;
+    right: 16px !important;
+  }
+  
+  /* Mobile status info */
+  .map-status-info {
+    text-align: center !important;
+    font-size: 10px !important;
+  }
+}
+
+/* Interactive hover effects */
+.ant-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.ant-btn:hover {
+  transform: translateY(-1px);
+  transition: all 0.2s ease;
+}
+
+/* Enhanced button interactions */
+.ant-btn-primary:hover {
+  box-shadow: 0 4px 12px rgba(24, 144, 255, 0.3);
+}
+
+.ant-btn-danger:hover {
+  box-shadow: 0 4px 12px rgba(255, 77, 79, 0.3);
+}
+
+/* Floating button enhancements */
+.ant-float-btn-group {
+  transition: all 0.3s ease;
+}
+
+.ant-float-btn-group:hover {
+  transform: scale(1.05);
+}
+
+/* Badge animations */
+.ant-badge-count {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Notification enhancements */
+.ant-notification {
+  backdrop-filter: blur(8px);
+}
+
+/* Tooltip improvements */
+.ant-tooltip {
+  font-size: 12px;
+}
+
+.ant-tooltip-inner {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+}
+
+/* Loading states */
+.loading-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Enhanced scrollbar for mobile */
+@media (max-width: 768px) {
+  .main-content::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  .fixed-sidebar::-webkit-scrollbar {
+    width: 4px;
+  }
+}
+
+/* Touch-friendly interactions */
+@media (hover: none) and (pointer: coarse) {
+  .ant-btn {
+    min-height: 44px;
+    padding: 8px 16px;
+  }
+  
+  .ant-input {
+    min-height: 44px;
+  }
+  
+  .ant-select-selector {
+    min-height: 44px;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .ant-card {
+    border: 2px solid #000;
+  }
+  
+  .ant-btn {
+    border-width: 2px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .bg-gray-50 {
+    background-color: #1f2937;
+  }
+  
+  .bg-white {
+    background-color: #374151;
+    color: #f9fafb;
+  }
+  
+  .text-gray-600 {
+    color: #d1d5db;
+  }
+  
+  .border-gray-200 {
+    border-color: #4b5563;
+  }
+}

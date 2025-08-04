@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard - Polygon Frontend Demo</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+        }
+        
+        .header {
+            background: white;
+            padding: 16px 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-bottom: 1px solid #e8e8e8;
+        }
+        
+        .header h1 {
+            margin: 0;
+            color: #3b82f6;
+            font-size: 24px;
+        }
+        
+        .container {
+            display: flex;
+            height: calc(100vh - 80px);
+        }
+        
+        .map-container {
+            flex: 1;
+            position: relative;
+        }
+        
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+        
+        .sidebar {
+            width: 320px;
+            background: white;
+            border-left: 1px solid #e8e8e8;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .polygon-info {
+            background: #f0f9ff;
+            border: 1px solid #3b82f6;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .color-rules {
+            background: white;
+            border: 1px solid #e8e8e8;
+            border-radius: 8px;
+            padding: 16px;
+        }
+        
+        .color-rule {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .color-rule:last-child {
+            border-bottom: none;
+        }
+        
+        .color-box {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        
+        .active-rule {
+            background: #f0f9ff;
+            font-weight: bold;
+        }
+        
+        .timeline-demo {
+            background: white;
+            border: 1px solid #e8e8e8;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .temperature-display {
+            font-size: 24px;
+            font-weight: bold;
+            color: #10b981;
+            text-align: center;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🌤️ Weather Dashboard - Polygon Demo</h1>
+    </div>
+    
+    <div class="container">
+        <div class="map-container">
+            <div id="map"></div>
+        </div>
+        
+        <div class="sidebar">
+            <div class="polygon-info">
+                <h3>📍 Active Polygon</h3>
+                <p><strong>Name:</strong> Berlin City Center</p>
+                <p><strong>Points:</strong> 6 coordinates</p>
+                <p><strong>Data Source:</strong> Temperature (°C)</p>
+                <div class="temperature-display">22.5°C</div>
+                <p style="text-align: center; color: #10b981; font-weight: bold;">Cool Temperature</p>
+            </div>
+            
+            <div class="timeline-demo">
+                <h3>⏰ Timeline Control</h3>
+                <p>Current Time: <strong>August 3, 2025 - 17:00</strong></p>
+                <p style="font-size: 12px; color: #666;">Move timeline to see polygon color changes</p>
+            </div>
+            
+            <div class="color-rules">
+                <h3>🎨 Color Rules</h3>
+                
+                <div class="color-rule">
+                    <span>&lt; 10°C (Cold)</span>
+                    <div class="color-box" style="background: #3b82f6;"></div>
+                </div>
+                
+                <div class="color-rule active-rule">
+                    <span>≥ 10°C (Cool) ✅</span>
+                    <div class="color-box" style="background: #10b981;"></div>
+                </div>
+                
+                <div class="color-rule">
+                    <span>≥ 25°C (Warm)</span>
+                    <div class="color-box" style="background: #f59e0b;"></div>
+                </div>
+                
+                <div class="color-rule">
+                    <span>≥ 35°C (Hot)</span>
+                    <div class="color-box" style="background: #ef4444;"></div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 20px; padding: 16px; background: #f9f9f9; border-radius: 8px;">
+                <h4>🔄 Interactive Features:</h4>
+                <ul style="font-size: 14px; color: #666;">
+                    <li>Click polygon to view details</li>
+                    <li>Right-click to delete</li>
+                    <li>Timeline updates color automatically</li>
+                    <li>Real-time weather data integration</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Initialize map centered on Berlin
+        const map = L.map('map').setView([52.5200, 13.4050], 12);
+        
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+        
+        // Define polygon coordinates (Berlin city center)
+        const polygonCoords = [
+            [52.5200, 13.4050], // Berlin center
+            [52.5300, 13.4150], // Northeast
+            [52.5250, 13.4250], // East
+            [52.5150, 13.4200], // Southeast
+            [52.5100, 13.4100], // Southwest
+            [52.5150, 13.3950], // West
+        ];
+        
+        // Create polygon with green color (cool temperature)
+        const polygon = L.polygon(polygonCoords, {
+            color: '#10b981',
+            fillColor: '#10b981',
+            fillOpacity: 0.3,
+            weight: 3
+        }).addTo(map);
+        
+        // Add popup to polygon
+        polygon.bindPopup(`
+            <div style="text-align: center;">
+                <h4>🌡️ Berlin City Center</h4>
+                <p><strong>Temperature:</strong> 22.5°C</p>
+                <p><strong>Status:</strong> Cool</p>
+                <p><strong>Color:</strong> Green</p>
+                <hr>
+                <small>Click timeline to see changes</small>
+            </div>
+        `);
+        
+        // Add marker at center
+        L.marker([52.5200, 13.4050])
+            .addTo(map)
+            .bindPopup('📍 Berlin City Center<br>Weather monitoring area');
+        
+        // Simulate temperature changes
+        let currentTemp = 22.5;
+        let colorIndex = 0;
+        const temperatures = [5, 15, 28, 38];
+        const colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444'];
+        const labels = ['Cold', 'Cool', 'Warm', 'Hot'];
+        
+        // Auto-update demo every 3 seconds
+        setInterval(() => {
+            colorIndex = (colorIndex + 1) % temperatures.length;
+            currentTemp = temperatures[colorIndex];
+            const newColor = colors[colorIndex];
+            const label = labels[colorIndex];
+            
+            // Update polygon color
+            polygon.setStyle({
+                color: newColor,
+                fillColor: newColor
+            });
+            
+            // Update sidebar
+            document.querySelector('.temperature-display').textContent = currentTemp + '°C';
+            document.querySelector('.temperature-display').style.color = newColor;
+            document.querySelector('.temperature-display + p').textContent = label + ' Temperature';
+            document.querySelector('.temperature-display + p').style.color = newColor;
+            
+            // Update active rule
+            document.querySelectorAll('.color-rule').forEach((rule, index) => {
+                rule.classList.remove('active-rule');
+                if (index === colorIndex) {
+                    rule.classList.add('active-rule');
+                }
+            });
+            
+            // Update popup
+            polygon.setPopupContent(`
+                <div style="text-align: center;">
+                    <h4>🌡️ Berlin City Center</h4>
+                    <p><strong>Temperature:</strong> ${currentTemp}°C</p>
+                    <p><strong>Status:</strong> ${label}</p>
+                    <p><strong>Color:</strong> ${newColor}</p>
+                    <hr>
+                    <small>Auto-updating demo</small>
+                </div>
+            `);
+        }, 3000);
+        
+        console.log('🌤️ Weather Dashboard Polygon Demo Loaded!');
+        console.log('📍 Polygon: Berlin City Center (6 points)');
+        console.log('🎨 Colors will cycle every 3 seconds');
+        console.log('🔄 Temperature: 5°C → 15°C → 28°C → 38°C');
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+{
+  "name": "weather-dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "analyze": "ANALYZE=true npm run build",
+    "build:prod": "NODE_ENV=production next build",
+    "export": "next export",
+    "type-check": "tsc --noEmit",
+    "test:performance": "node test-performance.js",
+    "docker:build": "docker build -t weather-dashboard .",
+    "docker:run": "docker run -p 3000:3000 weather-dashboard",
+    "docker:test": "./scripts/test-docker.sh",
+    "deploy:docker": "./scripts/deploy.sh docker",
+    "deploy:render": "./scripts/deploy.sh render",
+    "deploy:vercel": "./scripts/deploy.sh vercel",
+    "deploy:local": "./scripts/deploy.sh local"
+  },
+  "dependencies": {
+    "next": "14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.2.2",
+    "@types/node": "^20.8.0",
+    "@types/react": "^18.2.25",
+    "@types/react-dom": "^18.2.11",
+    "antd": "^5.11.0",
+    "leaflet": "^1.9.4",
+    "react-leaflet": "^4.2.1",
+    "@types/leaflet": "^1.9.8",
+    "zustand": "^4.4.6",
+    "react-range": "^1.8.14",
+    "recharts": "^2.8.0",
+    "date-fns": "^2.30.0",
+    "axios": "^1.6.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.51.0",
+    "eslint-config-next": "14.0.0",
+    "tailwindcss": "^3.3.5",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "@next/bundle-analyzer": "^14.0.0"
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "apiTests": [
+    {
+      "testName": "API Response - Berlin",
+      "status": "PASS",
+      "details": "48 data points received",
+      "timestamp": "2025-08-03T16:09:49.390Z"
+    },
+    {
+      "testName": "API Response - New York",
+      "status": "PASS",
+      "details": "48 data points received",
+      "timestamp": "2025-08-03T16:09:51.440Z"
+    },
+    {
+      "testName": "API Response - London",
+      "status": "PASS",
+      "details": "48 data points received",
+      "timestamp": "2025-08-03T16:09:52.720Z"
+    },
+    {
+      "testName": "API Response - Tokyo",
+      "status": "PASS",
+      "details": "48 data points received",
+      "timestamp": "2025-08-03T16:09:54.559Z"
+    }
+  ],
+  "dataProcessingTests": [
+    {
+      "testName": "Data Consistency",
+      "status": "PASS",
+      "details": "360 time points match temperature points",
+      "timestamp": "2025-08-03T16:09:56.413Z"
+    },
+    {
+      "testName": "Time Range Filtering",
+      "status": "PASS",
+      "details": "Filtered 6 points, avg temp: 23.9°C",
+      "timestamp": "2025-08-03T16:09:56.414Z"
+    },
+    {
+      "testName": "Temperature Data Validation",
+      "status": "PASS",
+      "details": "100.0% valid temperature readings",
+      "timestamp": "2025-08-03T16:09:56.414Z"
+    },
+    {
+      "testName": "Polygon Centroid Calculation",
+      "status": "PASS",
+      "details": "Centroid: [52.500, 13.400]",
+      "timestamp": "2025-08-03T16:09:59.316Z"
+    },
+    {
+      "testName": "Timeline Date Calculations",
+      "status": "PASS",
+      "details": "30-day window = 720 hours",
+      "timestamp": "2025-08-03T16:09:59.316Z"
+    }
+  ],
+  "colorRuleTests": [
+    {
+      "testName": "Color Rule - -5°C",
+      "status": "PASS",
+      "details": "Cold (#3b82f6)",
+      "timestamp": "2025-08-03T16:09:56.415Z"
+    },
+    {
+      "testName": "Color Rule - 5°C",
+      "status": "PASS",
+      "details": "Cold (#3b82f6)",
+      "timestamp": "2025-08-03T16:09:56.415Z"
+    },
+    {
+      "testName": "Color Rule - 15°C",
+      "status": "PASS",
+      "details": "Cool (#10b981)",
+      "timestamp": "2025-08-03T16:09:56.415Z"
+    },
+    {
+      "testName": "Color Rule - 25°C",
+      "status": "PASS",
+      "details": "Warm (#f59e0b)",
+      "timestamp": "2025-08-03T16:09:56.415Z"
+    },
+    {
+      "testName": "Color Rule - 35°C",
+      "status": "PASS",
+      "details": "Hot (#ef4444)",
+      "timestamp": "2025-08-03T16:09:56.415Z"
+    },
+    {
+      "testName": "Color Rule - 45°C",
+      "status": "PASS",
+      "details": "Hot (#ef4444)",
+      "timestamp": "2025-08-03T16:09:56.415Z"
+    }
+  ],
+  "performanceTests": [
+    {
+      "testName": "API Response Time",
+      "status": "PASS",
+      "details": "1483ms (< 5s threshold)",
+      "timestamp": "2025-08-03T16:09:57.899Z"
+    },
+    {
+      "testName": "Concurrent Requests",
+      "status": "PASS",
+      "details": "3 requests in 1417ms",
+      "timestamp": "2025-08-03T16:09:59.316Z"
+    }
+  ],
+  "summary": {
+    "total": 17,
+    "passed": 17,
+    "failed": 0
+  },
+  "testDate": "2025-08-03T16:09:59.317Z",
+  "environment": {
+    "nodeVersion": "v18.20.8",
+    "platform": "linux"
+  }
+}
