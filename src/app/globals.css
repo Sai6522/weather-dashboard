@@ -1044,13 +1044,21 @@ p, span, div {
   border-bottom: none !important;
 }
 
-/* Ensure zoom control text is visible */
-.leaflet-control-zoom-in:before {
-  content: '+' !important;
+/* Remove any custom content and let Leaflet handle the symbols */
+.leaflet-control-zoom-in:before,
+.leaflet-control-zoom-out:before {
+  content: none !important;
 }
 
-.leaflet-control-zoom-out:before {
-  content: '−' !important;
+/* Ensure Leaflet's default text content is preserved */
+.leaflet-control-zoom-in:after,
+.leaflet-control-zoom-out:after {
+  content: none !important;
+}
+
+/* Let Leaflet handle the default text content */
+.leaflet-control-zoom a {
+  text-indent: 0 !important;
 }
 
 /* Fix for zoom control positioning */
