@@ -337,6 +337,22 @@ export const InteractiveMap: React.FC = () => {
     };
   }, []);
 
+  // Update map container theme class when theme changes
+  useEffect(() => {
+    if (mapRef.current) {
+      const container = mapRef.current.getContainer();
+      if (container) {
+        if (effectiveTheme === 'dark') {
+          container.classList.add('dark', 'theme-dark');
+          container.setAttribute('data-theme', 'dark');
+        } else {
+          container.classList.remove('dark', 'theme-dark');
+          container.setAttribute('data-theme', 'light');
+        }
+      }
+    }
+  }, [effectiveTheme]);
+
   // Update polygon colors when time range changes - optimized with batch processing
   useEffect(() => {
     const updatePolygonColors = async () => {
@@ -681,6 +697,7 @@ export const InteractiveMap: React.FC = () => {
           zoomSnap={0.5} // Smoother zoom levels
           zoomDelta={0.5} // Smaller zoom increments
           wheelPxPerZoomLevel={120} // Less sensitive wheel zoom
+          className={effectiveTheme === 'dark' ? 'dark' : ''}
           whenReady={() => {
             if (mapRef.current) {
               mapRef.current.on('moveend', handleMapMove);
@@ -695,6 +712,15 @@ export const InteractiveMap: React.FC = () => {
               if (container) {
                 container.classList.add('map-fully-loaded');
                 container.setAttribute('data-map-loaded', 'true');
+                
+                // Add theme class to container for proper zoom control styling
+                if (effectiveTheme === 'dark') {
+                  container.classList.add('dark', 'theme-dark');
+                  container.setAttribute('data-theme', 'dark');
+                } else {
+                  container.classList.remove('dark', 'theme-dark');
+                  container.setAttribute('data-theme', 'light');
+                }
                 
                 // Add custom CSS for better drawing experience
                 container.style.cursor = isDrawing ? 'crosshair' : 'grab';
