@@ -24,6 +24,9 @@ COPY . .
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
+# Ensure public directory exists
+RUN mkdir -p public
+
 # Build the application
 RUN npm run build
 
@@ -42,8 +45,9 @@ ENV NEXT_TELEMETRY_DISABLED=1
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-# Copy public assets
-COPY --from=builder /app/public ./public
+# Create public directory and copy assets
+RUN mkdir -p ./public
+COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 
 # Set the correct permission for prerender cache
 RUN mkdir .next
@@ -66,7 +70,7 @@ ENV HOSTNAME="0.0.0.0"
 
 # Health check for container monitoring
 HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
-  CMD curl -f http://localhost:$PORT/ || exit 1
+  CMD curl -f http://localhost:$PORT/api/health || exit 1
 
 # Start the application
 CMD ["node", "server.js"]
